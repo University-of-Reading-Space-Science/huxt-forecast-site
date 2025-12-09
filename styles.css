@@ -1,3 +1,4 @@
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -22,6 +23,7 @@
     --link-color: #2c5f8d;
     --link-hover: #1e4464;
     --success-color: #059669;
+    --error-color: #dc2626;
     --nav-height: 70px;
 }
 
@@ -167,6 +169,119 @@ a:focus {
 .content-section {
     background-color: var(--bg-color);
     padding: 2rem 0;
+}
+
+/* Forecast Controls */
+.forecast-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 200px;
+}
+
+.control-group label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.forecast-select {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.forecast-select:hover {
+    border-color: var(--primary-color);
+}
+
+.forecast-select:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+    border-color: var(--primary-color);
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    padding: 1.5rem;
+    margin: 1rem 0;
+    background-color: var(--bg-secondary);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+.loading-indicator p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Error Message */
+.error-message {
+    padding: 1.5rem;
+    margin: 1rem 0;
+    background-color: #fee;
+    border-left: 4px solid var(--error-color);
+    border-radius: 4px;
+}
+
+.error-message p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--error-color);
+}
+
+/* Forecast Display */
+.forecast-display {
+    margin: 2rem 0;
+}
+
+.forecast-display h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.forecast-image-container,
+.forecast-video-container {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.forecast-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.forecast-video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
 }
 
 /* Product Grid */
@@ -398,6 +513,19 @@ a:focus {
         padding: 1rem;
     }
 
+    .forecast-controls {
+        flex-direction: column;
+    }
+
+    .control-group {
+        width: 100%;
+    }
+
+    .forecast-image-container,
+    .forecast-video-container {
+        min-height: 250px;
+    }
+
     .cookie-buttons {
         flex-direction: column;
     }
@@ -427,6 +555,10 @@ a:focus {
     .nav-brand {
         font-size: 1.2rem;
     }
+
+    .forecast-controls {
+        padding: 1rem;
+    }
 }
 
 /* Print Styles */
@@ -434,7 +566,8 @@ a:focus {
     .navbar,
     .cookie-banner,
     .cookie-modal,
-    .footer button {
+    .footer button,
+    .forecast-controls {
         display: none;
     }
 

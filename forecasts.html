@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forecast Products - Scientific Forecasting</title>
+    <title>Forecast Products -  The Space Weather Forecast Laboratory</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,36 +17,66 @@
     <main class="container">
         <h1>Forecast Products</h1>
         <section class="content-section">
-            <p>We provide a range of forecast products designed to meet various analytical and operational needs. Each product is carefully validated and updated regularly.</p>
 
-            <h2>Available Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>Short-term Forecasts</h3>
-                    <p>High-resolution predictions covering the next 1-7 days with frequent updates.</p>
+            <h2>HUXt Ensemble Forecast Dashboard</h2>
+            <p>Select boundary condition combinations to view the corresponding forecast data.</p>
+
+            <!-- Boundary Condition Selectors -->
+            <div class="forecast-controls">
+                <div class="control-group">
+                    <label for="ambient-select">Ambient:</label>
+                    <select id="ambient-select" class="forecast-select" aria-label="Select ambient boundary condition">
+                        <option value="WSA">WSA</option>
+                        <option value="CORTOM">CorTom</option>
+                        <option value="BRAVDA">BRaVDA</option>
+                    </select>
                 </div>
 
-                <div class="product-card">
-                    <h3>Medium-range Forecasts</h3>
-                    <p>Weekly to monthly forecasts providing broader trend information.</p>
-                </div>
-
-                <div class="product-card">
-                    <h3>Long-range Forecasts</h3>
-                    <p>Seasonal and multi-month outlooks for strategic planning purposes.</p>
-                </div>
-
-                <div class="product-card">
-                    <h3>Ensemble Products</h3>
-                    <p>Probabilistic forecasts showing uncertainty ranges and confidence intervals.</p>
+                <div class="control-group">
+                    <label for="cme-select">CME:</label>
+                    <select id="cme-select" class="forecast-select" aria-label="Select CME boundary condition">
+                        <option value="MOSWOC">MOSWOC</option>
+                        <option value="DONKI">DONKI M2M</option>
+                        <option value="ACME">ACME</option>
+                    </select>
                 </div>
             </div>
 
-            <h2>Data Formats</h2>
-            <p>Our products are available in multiple formats including CSV, NetCDF, and JSON for easy integration into your workflows.</p>
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                <p>Loading forecast data...</p>
+            </div>
 
-            <h2>Access</h2>
-            <p>Products are available through our data portal and API. Contact us for access credentials and documentation.</p>
+            <!-- Error Message -->
+            <div id="error-message" class="error-message" style="display: none;">
+                <p>Unable to load forecast data. Please try again later.</p>
+            </div>
+
+            <!-- Forecast Image -->
+            <div class="forecast-display">
+                <h3>Forecast Image</h3>
+                <div class="forecast-image-container">
+                    <img id="forecast-image"
+                         src=""
+                         alt="HUXt forecast visualization"
+                         class="forecast-image">
+                </div>
+            </div>
+
+            <!-- Forecast Animation -->
+            <div class="forecast-display">
+                <h3>Forecast Animation</h3>
+                <div class="forecast-video-container">
+                    <video id="forecast-video"
+                           controls
+                           loop
+                           class="forecast-video"
+                           preload="metadata">
+                        <source id="forecast-video-source" src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -57,5 +87,6 @@
     <script src="js/ComponentLoader.js"></script>
     <script src="js/NavigationInit.js"></script>
     <script src="js/CookieConsentManager.js"></script>
+    <script src="js/ForecastViewer.js"></script>
 </body>
 </html>
