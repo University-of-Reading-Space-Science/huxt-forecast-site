@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-/* 
+/*
  * Accessibility-focused color scheme:
  * - High contrast ratios (WCAG AAA compliant)
  * - Colors distinguishable for color vision deficiency
@@ -278,7 +278,7 @@ a:focus {
 }
 
 .forecast-video {
-    max-width: 100%;
+    width: 50%;
     height: auto;
     display: block;
     border-radius: 4px;
@@ -498,19 +498,27 @@ a:focus {
         right: 0;
         background-color: var(--primary-color);
         flex-direction: column;
-        padding: 1rem;
+        padding: 0;
         gap: 0;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.3s ease-in-out;
+        margin: 0;
     }
 
     .nav-menu.active {
         max-height: 500px;
+        padding: 1rem;
+    }
+
+    .nav-menu li {
+        width: 100%;
     }
 
     .nav-menu li a {
         padding: 1rem;
+        width: 100%;
+        display: block;
     }
 
     .forecast-controls {
@@ -524,6 +532,10 @@ a:focus {
     .forecast-image-container,
     .forecast-video-container {
         min-height: 250px;
+    }
+
+    .forecast-video {
+        width: 80%;
     }
 
     .cookie-buttons {
@@ -558,6 +570,10 @@ a:focus {
 
     .forecast-controls {
         padding: 1rem;
+    }
+
+    .forecast-video {
+        width: 100%;
     }
 }
 
