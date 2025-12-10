@@ -22,7 +22,6 @@
     // Load all components when DOM is ready
     async function loadAllComponents() {
         await Promise.all([
-            loadComponent('components/cookie_consent.html', 'cookie-consent-container'),
             loadComponent('components/navigation.html', 'navigation-container'),
             loadComponent('components/footer.html', 'footer-container')
         ]);
