@@ -17,14 +17,36 @@
         <section class="content-section">
 
             <h2> HUXt</h2>
-            <p>Our forecasting approach is great.</p>
-
-
-            <h2> Data Assimilation</h2>
-            <p>Our forecasting approach is great.</p>
-
+            <p>
+                HUXt is an open source reduced-physics solar-wind model <a href="https://doi.org/10.3389/fphy.2022.1005621">[1]</a>.
+                It is designed to provide similar results to 3D-MHD models at a fraction of the computational
+                cost <a href="https://doi.org/10.1007/s11207-020-01605-3">[2]</a>. This greatly reduces forecast latency and
+                enables large ensembles to be run in order to better estimate forecast uncertainty. For these forecasts,
+                HUXt uses an inner boundary distance of 21.5 solar radii and an outer boundary distance of 230 solar
+                radii. The ambient solar wind speed inner boundary condition is taken from either WSA, CorTom, or BRaVDA.
+                The Cone CME parameters are taken from cone files produced by either MOSWOC or NASA M2M forecasters, or
+                from ACME.
+            </p>
             <h2>Ensemble Modelling</h2>
-            <p>We employ a multi-model ensemble approach.</p>
+            <p>
+                We use ensemble forecasting methods to estimate the uncertainty in a forecast and to enable
+                probabilistic forecasting. More specifically, we use perturbed parameter ensembles to quantify the
+                forecast uncertainty resulting from the uncertainty in the boundary conditions of HUXt; this includes
+                both uncertainty in the ambient solar wind structure, and in the Cone CME parameters.
+                The output of the HUXt ensembles are time-series of the solar wind speed at Earth, from which we
+                compute a probabilistic forecast of CME arrival times and speeds.
+            </p>
+            <h2> Data Assimilation</h2>
+            <p>
+                Data assimilation methods can be used to both improve the accuracy and reduce the uncertainty of a forecast.
+                BRaVDA is a variational data assimilation scheme that assimilates in-situ solar wind speed observations
+                and produces an updated estimate of the solar wind speed at the inner-boundary of HUXt
+                <a href="https://doi.org/10.1029/2025SW004559">[3]</a>. This typically provides a more representative
+                estimate of the ambient solar wind structure than models such as WSA, although this depends on the
+                availability and quality of the in-situ solar wind observations.
+            </p>
+
+
         </section>
     </main>
 

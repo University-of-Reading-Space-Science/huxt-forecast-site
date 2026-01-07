@@ -14,15 +14,54 @@
     <main class="container">
         <h1>Data Sources</h1>
         <section class="content-section">
-            <p>Our forecasts use the following data sources.</p>
+            <p>
+                Below we detail the sources of the data we use to construct the boundary conditions of the HUXt forecasts.
+            </p>
 
-            <ul>
-                <li>WSA</li>
-                <li>Cone Files</li>
-                <li>CorTom</li>
-                <li>ACME</li>
-                <li>BRaVDA</li>
-            </ul>
+            <h2> Ambient Solar Wind Structure</h2>
+            <h3>The Wang-Sheeley-Arge (WSA) model</h3>
+            <p>
+                The WSA model is widely used in both research and operational space weather forecasting to estimate the
+                ambient solar wind structure in the low heliosphere <a href="https://doi.org/10.5194/hgss-8-21-2017">[1]</a>.
+                WSA is an empirical model that relates the structure of the coronal magnetic field to the solar
+                wind flow speed. It takes as an input a synoptic map of the photospheric magnetic field structure, such
+                as those produced by the National Solar Observatory's <a href="https://gong.nso.edu/">Global Oscillation
+                Network Group (GONG)</a>.
+            </p>
+            <h3>CorTom</h3>
+            <p>
+                Professor Huw Morgan and his colleagues at the University of Aberystwyth developed a coronal rotational
+                tomography method (CorTom) to estimate the density and flow speed of the solar wind in the upper
+                corona and low heliosphere <a href="https://doi.org/10.1029/2023SW003448">[2]</a>. CorTom is applied to
+                the STEREO SECCHI Coronagraph data to estimate the solar wind flow speed at 8 solar radii, and these
+                speeds are used as an inner boundary condition to HUXt, after they have been mapped to 21.5 solar radii.
+            </p>
+            <h3>BRaVDA</h3>
+            <p>
+                The Burger Radial Variational Data Assimilation (BRaVDA) scheme is a 4DVar data assimilation scheme that
+                estimates the structure of the solar wind flow in the low heliosphere
+                <a href="https://doi.org/10.1029/2020SW002698">[3]</a>. BRaVDA assimilates in-situ solar wind speed
+                observations with model estimates of the solar wind speed structure, such as those provided by the WSA
+                model. Following Turner et al. (2025) <a href="https://doi.org/10.1029/2025SW004559">[4]</a>, we use
+                BRaVDA output generated from assimilating the real-time solar wind speed observations from the L1
+                lagrange point with output from the WSA model.
+            </p>
+
+            <h2> Cone CME parameters</h2>
+            <h3> NASA M2M Cone Files</h3>
+            <p>
+                The NASA Moon-to-Mars (M2M) Space Weather Analysis Office has forecasters that produce cone CME fits to
+                coronagraph observations to enable real-time space weather forecasting. These are made publicly
+                available by NASA's Coordinated Community Modelling Center (CCMC) via the <a href="https://kauai.ccmc.gs
+                fc.nasa.gov/DONKI/">Database of Notifications, Knowledge, and Information (DONKI)</a> catalogue.
+            </p>
+            <h3>ACME</h3>
+            <p>
+                Professor Huw Morgan and his colleagues at the University of Aberystwyth developed an Automatic CME
+                (ACME) characterisation methodology. ACME is applied to the STEREO SECCHI Coronagraph data to
+                automatically identify and characterise the spatial structure and flow of CMEs in the low heliosphere.
+                From this, estimates of the cone CME paramters are derived which are then used with HUXt.
+            </p>
 
 
         </section>
