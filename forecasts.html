@@ -16,8 +16,10 @@
         <section class="content-section">
 
             <h2>HUXt Ensemble Forecast Dashboard</h2>
-            <p>Select a combination of boundary conditions to view the corresponding forecast data.</p>
-            <p>Add collaborators logos for selected forecasts.</p>
+            <p>
+                Select a combination of boundary conditions to view the corresponding forecast data. For help
+                interpreting the forecast dashboard, please consult <a href="#forecast-guide">this guide</a>.
+            </p>
             <!-- Boundary Condition Selectors -->
             <div class="forecast-controls">
                 <div class="control-group">
@@ -27,6 +29,8 @@
                         <option value="CORTOM">CorTom</option>
                         <option value="BRAVDA">BRaVDA</option>
                     </select>
+                    <a href="data_sources.html#ambient_sources" target="_blank" class="info-link">Ambient Solar Wind
+                        Sources</a>
                 </div>
 
                 <div class="control-group">
@@ -35,6 +39,7 @@
                         <option value="DONKI">DONKI M2M</option>
                         <option value="ACME">ACME</option>
                     </select>
+                    <a href="data_sources.html#cme_sources" target="_blank" class="info-link">CME Parameter Sources</a>
                 </div>
             </div>
 
@@ -50,7 +55,7 @@
 
             <!-- Forecast Image -->
             <div class="forecast-display">
-                <h3>Forecast Image</h3>
+                <h3>Latest Forecast</h3>
                 <div class="forecast-image-container">
                     <img id="forecast-image"
                          src=""
@@ -61,7 +66,7 @@
 
             <!-- Forecast Animation -->
             <div class="forecast-display">
-                <h3>Forecast Animation</h3>
+                <h3>Latest Forecast Animation</h3>
                 <div class="forecast-video-container">
                     <video id="forecast-video"
                            controls
@@ -71,6 +76,71 @@
                         <source id="forecast-video-source" src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                </div>
+                <p>
+                    This animation shows the latest HUXt forecast for the selected ambient solar wind and CME boundary
+                    conditions. The presented view looks down on Earth's orbital plane, i.e. approximately looking down
+                    on the north rotational pole of the Sun.
+                </p>
+            </div>
+
+            <!-- Forecast Guide -->
+            <div class="forecast-display" id="forecast-guide">
+                <h3>Forecast Guide</h3>
+
+                <p>
+                    Below is an example of the forecast dashboard, using WSA for the ambient solar wind boundary
+                    condition and the DONKI M2M catalogue as the source of CME paramters.
+                </p>
+
+                <div class="forecast-image-container">
+                    <img src="images/example_forecast_dashboard.png"
+                         alt="Example HUXt forecast dashboard"
+                         class="forecast-image">
+                </div>
+                <div class="forecast-guide-text">
+                    <p>
+                        The HUXt ensemble forecast takes two data inputs:
+                        <ul>
+                            <li>Estimates of the solar wind speed close to the Sun at 21.5 rS.</li>
+                            <li>Estimates of CME properties (speed, direction, and width) at 21.5 rS.</li>
+                        </ul>
+                        We perturb both inputs (solar wind and CME properties) within some reasonable ranges to generate
+                        a 500-member ensemble of different initial conditions at 21.5 rS. Each is propagated to Earth
+                        using HUXt, which captures the uncertainty in the forecast conditions at Earth.
+                    </p>
+                    <h4>Dashboard panel descriptions</h4>
+                    <p>
+                        <strong>Top-left:</strong> Time series of solar wind speed, for the model spin-up period (grey)
+                        and the forecast interval (white). The black line is the “deterministic” forecast – the HUXt run
+                        with the selected ambient solar wind boundary condtion and CME parameters, without any
+                        perturbation. The white line is the HUXt ensemble median, the blue and purple coloured bands
+                        are percentiles of the ensemble. When the bands are narrow or broad, the forecast has high or
+                        low confidence, respectively. The observed real-time solar wind speed from ACE is shown in red
+                        for the last 5 days.
+                    </p>
+                    <p>
+                        <strong>Middle-left:</strong> Time series of CME arrival probability at Earth. It is the
+                        fraction of ensemble members that predict a particular CME will arrival at Earth within a
+                        particular time window. The total area under a given curve is a measure of the confidence that
+                        CME will arrive at Earth. A narrower peak suggests higher confidence in the arrival time. A
+                        broader peak suggests lower confidence in the arrival time.
+                    </p>
+                    <p>
+                        <strong>Bottom-left:</strong> Table of the Earth-directed CME properties and forecast arrival
+                        times and speeds.
+                    </p>
+                    <p>
+                        <strong>Top-right:</strong> Summary of the input data. The colour map shows the selected ambient
+                        solar wind speed boundary conditions at 21.5 rS, in HEEQ coordinates. Overlaid are the positions
+                        and widths of CMEs from the selected source of CME data. Those with a possibility of Earth
+                        impact are assigned a colour which is used consistently across these panels.
+                    </p>
+                    <p>
+                        <strong>Bottom-right:</strong> The probability density of CME arrival speeds, for the
+                        Earth-impacting CMEs only. A narrower peak suggests higher confidence in the arrival speed,
+                        while a broader peak suggests lower confidence in the arrival speed.
+                    </p>
                 </div>
             </div>
         </section>
